@@ -1,0 +1,26 @@
+{
+    "_version": "3.0.0",
+    "identification": {
+        "id": "tutorial.app.one.app1",
+        "entityType": "businessapp",
+        "i18n": "i18n/i18n.properties"
+    },
+    "payload": {
+        "visualizations": {
+            "customTile-displayToCustom": {
+                "vizType": "project.namespace.customTile",
+                "vizConfig": {
+                    "sap.app": {
+                        "title": "{{notifList.tile.title}}",
+                        "subTitle": "{{notifList.tile.subtitle}}"
+                    },
+                    "sap.flp": {
+                        "target": {
+                            "inboundId": "data-display"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
