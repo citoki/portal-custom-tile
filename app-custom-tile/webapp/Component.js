@@ -11,7 +11,7 @@ sap.ui.define([
 
 		createContent: function () {
 			var oTile = sap.ui.view({
-				viewName: "project.namespace.customTile.DynamicTile",
+				viewName: "project.namespace.customTile.Tile",
 				type: sap.ui.core.mvc.ViewType.JS
 			});
 

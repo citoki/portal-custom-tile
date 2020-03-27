@@ -1,0 +1,13 @@
+{
+  "name": "app-custom-tile-2",
+  "description": "Tile for FLP",
+  "repository": "https://github.com/citoki/portal-custom-tile",
+  "license": "MIT",
+  "devDependencies": {
+    "@sap/grunt-sapui5-bestpractice-build": "1.4.2",
+    "@sap/grunt-sapui5-bestpractice-test": "2.0.1"
+  },
+  "scripts": {
+    "test": "grunt unit_and_integration_tests"
+  }
+}

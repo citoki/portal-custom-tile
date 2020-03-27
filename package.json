@@ -1,0 +1,66 @@
+{
+  "name": "portal-custom-tile",
+  "version": "1.0.0",
+  "description": "Custom Tile with Portal Service by Cloud Foundry",
+  "repository": "https://github.com/citoki/portal-custom-tile",
+  "license": "MIT",
+  "engines": {
+    "node": "~10.19.0"
+  },
+  "dependencies": {
+    "@sap/cds": "3.31.2",
+    "@sap/xsenv": "2.2.0",
+    "@sap/xssec": "2.2.5",
+    "express": "4.17.1",
+    "hdb": "0.17.1",
+    "passport": "0.4.1"
+  },
+  "scripts": {
+    "cds:build": "cds build/all --clean",
+    "cds:start": "cds run",
+    "cds:watch": "cds watch",
+    "mta:build": "mbt build -p=cf",
+    "mta:deploy": "cf deploy mta_archives/portal-custom-tile_1.0.0.mtar -f",
+    "start": "npx cds run",
+    "ui5:serve:tile1": "ui5 serve --config ui5-tile1.yaml",
+    "ui5:serve:tile2": "ui5 serve --config ui5-tile2.yaml"
+  },
+  "devDependencies": {
+    "@openui5/sap.m": "1.75.0",
+    "@openui5/sap.ui.core": "1.75.0",
+    "@openui5/sap.ui.layout": "1.75.0",
+    "@openui5/sap.ui.unified": "1.75.0",
+    "@openui5/themelib_sap_fiori_3": "1.75.0",
+    "@ui5/cli": "1.14.0",
+    "grunt": "1.1.0",
+    "mbt": "1.0.11",
+    "sqlite3": "4.1.1",
+    "ui5-middleware-livereload": "0.1.7",
+    "ui5-middleware-simpleproxy": "0.1.5"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-middleware-simpleproxy",
+      "ui5-middleware-livereload",
+      "@openui5/sap.m",
+      "@openui5/sap.ui.core",
+      "@openui5/sap.ui.layout",
+      "@openui5/sap.ui.unified",
+      "@openui5/themelib_sap_fiori_3"
+    ]
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql",
+        "[production]": {
+          "kind": "hana"
+        },
+        "model": [
+          "db",
+          "srv"
+        ]
+      }
+    }
+  }
+}

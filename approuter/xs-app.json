@@ -1,0 +1,7 @@
+{
+	"routes": [{
+        "source": "/notifservice/",
+        "destination": "srv_api"
+    }],
+	"welcomeFile": "/cp.portal"
+}

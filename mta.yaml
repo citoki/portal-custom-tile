@@ -1,0 +1,147 @@
+ID: portal-custom-tile
+_schema-version: "3.2.0"
+parameters:
+  enable-parallel-deployments: true
+  deploy_mode: html5-repo
+version: 1.0.0
+modules:
+  - name: portal-custom-tile_appRouter
+    type: approuter.nodejs
+    path: approuter
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: portal-custom-tile_uaa
+      - name: portal-custom-tile_h5_rt
+      - name: portal_resources_portal-custom-tile
+      - name: srv_api
+        group: destinations
+        properties:
+          name: srv_api
+          url: ~{url}
+          forwardAuthToken: true
+
+  - name: portal-custom-tile_ui_deployer
+    type: com.sap.html5.application-content
+    path: ui_deployer
+    requires:
+      - name: portal-custom-tile_h5_rh
+    build-parameters:
+      requires:
+        - name: portal-custom-tile_app1
+          target-path: resources/app1
+          artifacts:
+            - './*'
+        - name: portal-custom-tile_app-custom-tile
+          target-path: resources/app-custom-tile
+          artifacts:
+            - './*'
+        - name: portal-custom-tile_app-custom-tile-2
+          target-path: resources/app-custom-tile-2
+          artifacts:
+            - './*'
+
+  - name: portal-custom-tile_app1
+    type: html5
+    path: app1
+    build-parameters:
+      builder: grunt
+      supported-platforms: []
+      build-result: dist
+
+  - name: portal-custom-tile_app-custom-tile
+    type: html5
+    path: app-custom-tile
+    build-parameters:
+      builder: grunt
+      supported-platforms: []
+      build-result: dist
+
+  - name: portal-custom-tile_app-custom-tile-2
+    type: html5
+    path: app-custom-tile-2
+    build-parameters:
+      builder: grunt
+      supported-platforms: []
+      build-result: dist
+
+  - name: portal-custom-tile_flp
+    type: com.sap.portal.content
+    path: flp
+    parameters:
+      memory: 128M
+      buildpack: 'https://github.com/cloudfoundry/nodejs-buildpack/releases/download/v1.6.39/nodejs-buildpack-cflinuxfs3-v1.6.39.zip'
+    requires:
+      - name: portal-custom-tile_uaa
+      - name: portal_resources_portal-custom-tile
+      - name: portal-custom-tile_h5_rh
+      - name: portal-custom-tile_ui_deployer
+
+  - name: portal-custom-tile_db
+    type: hdb
+    path: db
+    parameters:
+      memory: 256M
+      disk-quota: 256M
+    requires:
+      - name: portal-custom-tile_db-hdi-container
+
+  - name: portal-custom-tile_srv
+    type: nodejs
+    path: srv
+    parameters:
+      memory: 512M
+      disk-quota: 256M
+    provides:
+      - name: srv_api
+        properties:
+          url: ${default-url}
+    requires:
+      - name: portal-custom-tile_uaa
+      - name: portal-custom-tile_db-hdi-container
+
+resources:
+  - name: portal-custom-tile_h5_rt
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: app-runtime
+      service: html5-apps-repo
+
+  - name: portal-custom-tile_h5_rh
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: app-host
+      service: html5-apps-repo
+
+  - name: uaa_portal-custom-tile
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+
+  - name: portal_resources_portal-custom-tile
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: standard
+      service: portal
+
+  - name: portal-custom-tile_db-hdi-container
+    type: com.sap.xs.hdi-container
+    # parameters:
+      # service: hanatrial
+      # service-plan: hdi-shared
+      # service-name: portal-custom-tile_db-hdi-container
+      # config:
+        # schema: CUSTTILE_SCHEMA
+        # makeUniqueName: false
+    properties:
+      hdi-container-name: ${service-name}
+
+  - name: portal-custom-tile_uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa

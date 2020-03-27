@@ -11,8 +11,22 @@
                 "vizType": "project.namespace.customTile",
                 "vizConfig": {
                     "sap.app": {
-                        "title": "{{notifList.tile.title}}",
-                        "subTitle": "{{notifList.tile.subtitle}}"
+                        "title": "{{customTile.title}}",
+                        "subTitle": "{{customTile.subtitle}}"
+                    },
+                    "sap.flp": {
+                        "target": {
+                            "inboundId": "data-display"
+                        }
+                    }
+                }
+            },
+            "customTile2-display": {
+                "vizType": "project.namespace.customTile2",
+                "vizConfig": {
+                    "sap.app": {
+                        "title": "{{customTile2.title}}",
+                        "subTitle": "{{customTile2.subtitle}}"
                     },
                     "sap.flp": {
                         "target": {

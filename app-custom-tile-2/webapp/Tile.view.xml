@@ -1,0 +1,35 @@
+<View xmlns="sap.ui.core.mvc"
+    controllerName="project.namespace.customTile2.Tile"
+    displayBlock="true"
+>
+	<GenericTile xmlns="sap.m"
+		header="{view>/title}"
+		subheader="{view>/subTitle}"
+		frameType="TwoByOne"
+		press="onPress"
+		busy="{view>/busy}"
+		>
+		<tileContent>
+			<TileContent footer="Warnings">
+				<content>
+					<!-- <HarveyBallMicroChart xmlns="sap.suite.ui.microchart" formattedLabel="true" total="{/Notifications/$count}" size="Responsive" alignContent="Right"> -->
+					<HarveyBallMicroChart xmlns="sap.suite.ui.microchart" formattedLabel="true" total="{view>/notifications}" size="Responsive" alignContent="Center">
+						<items>
+							<!-- <HarveyBallMicroChartItem fraction="{/Notifications/$count?$filter=Type eq 'WARNING'}" color="Critical" /> -->
+							<HarveyBallMicroChartItem fraction="{view>/warnings}" color="Critical" />
+						</items>
+					</HarveyBallMicroChart>
+				</content>
+			</TileContent>
+			<TileContent footer="Infos">
+				<content>
+					<HarveyBallMicroChart xmlns="sap.suite.ui.microchart" formattedLabel="true" total="{view>/notifications}" size="Responsive" alignContent="Center">
+						<items>
+							<HarveyBallMicroChartItem fraction="{view>/infos}" color="Good" />
+						</items>
+					</HarveyBallMicroChart>
+				</content>
+			</TileContent>
+		</tileContent>
+	</GenericTile>
+</View>

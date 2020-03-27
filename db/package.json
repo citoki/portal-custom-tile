@@ -1,0 +1,15 @@
+{
+  "name": "portal-custom-tile_db",
+  "description": "DB for custom tile project",
+  "repository": "https://github.com/citoki/portal-custom-tile",
+  "license": "MIT",
+  "dependencies": {
+    "@sap/hdi-deploy": "3.8.2"
+  },
+  "engines": {
+    "node": "^10"
+  },
+  "scripts": {
+    "start": "node node_modules/@sap/hdi-deploy/deploy.js"
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "name": "portal-custom-tile_srv",
+    "description": "CDS Server for Portal Custom Tile app",
+    "repository": "https://github.com/citoki/portal-custom-tile",
+    "license": "MIT",
+    "version": "1.0.0",
+    "dependencies": {
+        "@sap/cds": "3.31.2",
+        "express": "4.17.1",
+        "hdb": "0.17.1"
+    },
+    "engines": {
+        "node": "^10.0.0"
+    },
+    "scripts": {
+        "postinstall": "npm dedupe",
+        "start": "cds serve gen/csn.json"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "hana",
+                "model": "gen/csn.json"
+            }
+        }
+    }
+}

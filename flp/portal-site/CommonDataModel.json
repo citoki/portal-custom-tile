@@ -1,7 +1,7 @@
 {
 	"_version": "3.0.0",
 	"identification": {
-		"id": "8da319e7-19da-498a-843e-c2388d88d6e0-1573034934305",
+		"id": "8da319e7-19da-498a-843e-c2366d88d6e0-1573034934305",
 		"entityType": "bundle"
 	},
 	"payload": {
@@ -9,14 +9,17 @@
 			"_version": "3.0.0",
 			"identification": {
 				"id": "defaultCatalogId",
-				"title": "{{title}}",
+				"title": "{{catalog.title}}",
 				"entityType": "catalog",
-				"i18n": "i18n/defaultCatalogId.properties"
+				"i18n": "i18n/i18n.properties"
 			},
 			"payload": {
 				"viz": [{
 					"id": "tutorial.app.one.app1",
               		"vizId": "customTile-displayToCustom"
+				},{
+					"id": "tutorial.app.one.app1",
+					"vizId": "customTile2-display"
 				}]
 			}
 		}],
@@ -24,9 +27,9 @@
 			"_version": "3.0.0",
 			"identification": {
 				"id": "defaultGroupId",
-				"title": "{{title}}",
+				"title": "{{group.staticTiles.title}}",
 				"entityType": "group",
-				"i18n": "i18n/defaultGroupId.properties"
+				"i18n": "i18n/i18n.properties"
 			},
 			"payload": {
 				"viz": [{
@@ -39,22 +42,26 @@
 			"_version": "3.0.0",
 			"identification": {
 				"id": "group-1",
-				"title": "{{title}}",
+				"title": "{{group.customTiles.title}}",
 				"entityType": "group",
-				"i18n": "i18n/group-1.properties"
+				"i18n": "i18n/i18n.properties"
 			},
 			"payload": {
 				"viz": [{
 					"id": "tutorial.app.one.app1-0-1573035031268",
 					"appId": "tutorial.app.one.app1",
 					"vizId": "customTile-displayToCustom"
+				},{
+					"id": "tutorial.app.one.app1-1-1573035031268",
+					"appId": "tutorial.app.one.app1",
+					"vizId": "customTile2-display"
 				}]
 			}
 		}],
 		"sites": [{
 			"_version": "3.0.0",
 			"identification": {
-				"id": "06eb988b-d93c-4d95-859f-706fd43b80d4-1573034934305",
+				"id": "06eb988b-d93c-4d95-859f-7061143b80d4-1573034934305",
 				"entityType": "site",
 				"title": "SAP Fiori launchpad site on Cloud Foundry",
 				"description": "SAP Fiori launchpad site on Cloud Foundry, deployed from SAP Web IDE"

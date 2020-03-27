@@ -1,7 +1,7 @@
 "use strict";
 /*global jQuery, sap, hasher */
 
-sap.ui.controller("project.namespace.customTile.DynamicTile", {
+sap.ui.controller("project.namespace.customTile.Tile", {
 
 	_oProperties: {},
 
@@ -11,7 +11,7 @@ sap.ui.controller("project.namespace.customTile.DynamicTile", {
 
 		var oModel = new sap.ui.model.json.JSONModel({
 			title: this._oProperties.title || "Notifications",
-			subTitle: this._oProperties.subtitle || "dynamic",
+			subTitle: this._oProperties.subtitle || "custom tile",
 			busyChart: false,
 			errors: 0,
 			notifications: 0

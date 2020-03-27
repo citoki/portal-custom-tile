@@ -17,9 +17,9 @@
 		},
 		"ach": "CA-UI2-INT-FE",
 		"dataSources": {
-			"mainService" : {
+			"mainService": {
 				"uri": "notifservice",
-				"type" : "OData",
+				"type": "OData",
 				"settings": {
 					"odataVersion": "4.0"
 				}
@@ -31,6 +31,15 @@
 					"semanticObject": "object1",
 					"action": "action1",
 					"signature": {
+						"parameters": {
+							"notifType": {
+								"defaultValue": {
+									"value": "Error",
+									"format": "plain"
+								},
+								"required": true
+							}
+						},
 						"additionalParameters": "allowed"
 					}
 				}
@@ -61,7 +70,7 @@
 		"models": {},
 
 		"rootView": {
-			"viewName": "project.namespace.customTile.DynamicTile",
+			"viewName": "project.namespace.customTile.Tile",
 			"type": "XML",
 			"async": true,
 			"id": "idAppControl"

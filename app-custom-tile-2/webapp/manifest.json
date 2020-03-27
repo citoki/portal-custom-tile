@@ -1,0 +1,96 @@
+{
+	"_version": "1.12.0",
+	"sap.flp": {
+		"type": "tile",
+		"tileSize": "1x2"
+	},
+	"sap.app": {
+		"id": "project.namespace.customTile2",
+		"type": "application",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"i18n": "i18n/i18n.properties",
+		"title": "{{app.title}}",
+		"description": "{{app.description}}",
+		"resources": "resources.json",
+		"ach": "XX",
+		"dataSources": {
+			"mainService": {
+				"uri": "/notifservice/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		},
+		"crossNavigation": {
+			"inbounds": {
+				"object2-action1": {
+					"semanticObject": "object2",
+					"action": "action1",
+					"signature": {
+						"parameters": {
+							"notifType": {
+								"defaultValue": {
+									"value": "WARNING",
+									"format": "plain"
+								},
+								"required": true
+							}
+						},
+						"additionalParameters": "allowed"
+					},
+					"title": "{{app.tile.title}}",
+					"subTitle": "{{app.tile.subTitle}}"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"fullWidth": true,
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_fiori_3",
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"minUI5Version": "1.75.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.suite.ui.microchart": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "project.namespace.customTile2.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"settings": {
+					"operationMode": "Server",
+					"synchronizationMode": "None",
+					"groupId": "$auto"
+				}
+			}
+		},
+		"routing": {}
+	}
+}

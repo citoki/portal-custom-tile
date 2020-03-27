@@ -32,7 +32,7 @@ jspm_packages
 sdk
 **/resources/**
 **/test-resources/**
-package-lock.json
+# package-lock.json
 
 # Optional npm cache directory
 .npm

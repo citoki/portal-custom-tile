@@ -1,0 +1,8 @@
+---
+applications:
+- name: portal-custom-tile_appRouter
+  routes:
+    - route: portal-custom-tile-approuter.cfapps.eu10.hana.ondemand.com
+  memory: 256M
+  services:
+    - uaa_portal-custom-tile

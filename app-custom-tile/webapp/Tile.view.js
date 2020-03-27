@@ -1,7 +1,7 @@
-sap.ui.jsview("project.namespace.customTile.DynamicTile", {
+sap.ui.jsview("project.namespace.customTile.Tile", {
 
 	getControllerName: function () {
-		return "project.namespace.customTile.DynamicTile";
+		return "project.namespace.customTile.Tile";
 	},
 
 	createContent: function (oController) {
@@ -13,11 +13,13 @@ sap.ui.jsview("project.namespace.customTile.DynamicTile", {
 		jQuery.sap.require("sap.m.GenericTile");
 		var oController = this.getController();
 
-		var oChartData1 = new sap.suite.ui.microchart.ComparisonMicroChartData({title: "Errors", value: "{/errors}", color: "Critical"});
-		var oChartData2 = new sap.suite.ui.microchart.ComparisonMicroChartData({title: "Total Notifications", value: "{/notifications}", color: "Neutral"});
+		// color attribute is only for backup reasons, colorPalette by ComparisonMicroChart is used
+		var oChartData1 = new sap.suite.ui.microchart.ComparisonMicroChartData({title: "Errors", value: "{/errors}", color: "Error"});
+		var oChartData2 = new sap.suite.ui.microchart.ComparisonMicroChartData({title: "Total", value: "{/notifications}", color: "Neutral"});
 		var oMicroChart = new sap.suite.ui.microchart.ComparisonMicroChart({
 			busy: "{/busyChart}",
 			size: "Responsive",
+			colorPalette: ["sapUiChartPaletteSemanticBad", "sapUiChartPaletteQualitativeHue1"],
 			data: [oChartData1, oChartData2]
 		});
 
