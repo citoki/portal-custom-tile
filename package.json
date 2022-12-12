@@ -11,7 +11,7 @@
     "@sap/cds": "3.31.2",
     "@sap/xsenv": "2.2.0",
     "@sap/xssec": "2.2.5",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "hdb": "0.17.1",
     "passport": "0.4.1"
   },
